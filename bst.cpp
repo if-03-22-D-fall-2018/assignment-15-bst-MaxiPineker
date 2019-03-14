@@ -88,6 +88,9 @@ void add(Bst* bst, int value){
 
 int root_value(Bst bst)
 {
+  if (bst == 0) {
+    return 0;
+  }
   return bst->value;
 }
 
@@ -151,15 +154,12 @@ bool are_equal(Bst bst1, Bst bst2)
   if (bst1 == bst2) {
     return true;
   }
-  else if (bst1->value == bst2->value) {
-    return true;
+  if (get_depth(bst1) == get_depth(bst2)) {
+    if (bst1->value == bst2->value) {
+      return are_equal(bst1->left_subtree, bst2->left_subtree) && are_equal(bst1->right_subtree, bst2->right_subtree);
+    }
   }
-  else if (bst1 != bst2) {
-    return false;
-  }
-  else{
-    return false;
-  }
+  return false;
 }
 
 
