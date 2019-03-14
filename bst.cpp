@@ -165,7 +165,16 @@ bool are_equal(Bst bst1, Bst bst2)
 
 void most_left_longest_branch(Bst bst, Bst* branch)
 {
-
+  if (bst != 0) {
+    if (get_depth(bst->left_subtree) >= get_depth(bst->right_subtree)) {
+      add(branch, bst->value);
+      most_left_longest_branch(bst->left_subtree, branch);
+    }
+    else{
+      add(branch, bst->value);
+      most_left_longest_branch(bst->right_subtree, branch);
+    }
+  }
 }
 
 int get_number_of_subtrees(Bst bst)
