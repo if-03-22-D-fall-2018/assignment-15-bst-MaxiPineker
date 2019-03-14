@@ -170,5 +170,8 @@ void most_left_longest_branch(Bst bst, Bst* branch)
 
 int get_number_of_subtrees(Bst bst)
 {
-  return 0;
+  if (bst == 0) {
+    return -1;
+  }
+  return get_depth(bst)-1;
 }
